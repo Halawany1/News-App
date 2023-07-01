@@ -17,12 +17,14 @@ Widget defaultformfield({
   IconData ?suffix2,
   bool obscureText=false,
   VoidCallback ?ontap,
-  double ?width
+  double ?width,
+  Function(String) ?onchange,
 })=> Container(
   width: width,
   child:  TextFormField(
     controller: controller,
     keyboardType: type,
+    onChanged: onchange,
     validator: validator,
     obscureText: obscureText,
     onTap: ontap,
