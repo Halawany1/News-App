@@ -6,6 +6,10 @@ class NewsChangeNavBarState extends NewsState{}
 
 class NewsGetBusinessSuccessState extends NewsState{}
 
+class ChangeSelectItemState extends NewsState{}
+
+class ChangePlatformState extends NewsState{}
+
 class NewsGetBusinessErrorState extends NewsState{
   final String error;
   NewsGetBusinessErrorState(this.error);

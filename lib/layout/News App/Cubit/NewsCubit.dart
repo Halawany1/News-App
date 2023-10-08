@@ -29,16 +29,15 @@ void ChangeBottomNavBar(int Index){
   emit(NewsChangeNavBarState());
 }
 List<dynamic> business=[];
+int selectedItem=0;
 void GetBusiness(){
   emit(NewsGetBusinessLoadingState());
-
     DioHelper.GetData(query: {
       'country':'us'
       ,'category':'business',
       'apiKey':'8d6c1e33c6864749bd703bb1cd969159'
     }, url: 'v2/top-headlines').then((value) {
       business = value.data['articles'];
-      print(business[2]['title']);
       emit(NewsGetBusinessSuccessState());
     }).catchError((error) {
       print(error.toString());
@@ -46,10 +45,19 @@ void GetBusiness(){
     });
 
 }
+void ChangeSelectItem(int index){
+  selectedItem=index;
+  emit(ChangeSelectItemState());
+}
+
+bool isDesktop=false;
+void ChangePlatform(bool platform){
+  isDesktop=platform;
+  emit(ChangePlatformState());
+}
 
 List<dynamic> sports=[];
 void GetSports(){
-
     emit(NewsGetSportsLoadingState());
 
       DioHelper.GetData(query: {

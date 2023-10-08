@@ -1,24 +1,32 @@
+
+import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled/layout/News%20App/Cubit/NewsCubit.dart';
 import 'package:untitled/layout/News%20App/NewsApp.dart';
 import 'package:untitled/shared/Network/local/CacheHelper.dart';
 import 'package:untitled/shared/Network/remote/dio_helper.dart';
 import 'package:untitled/shared/bloc_observer.dart';
+import 'package:window_manager/window_manager.dart';
 import 'layout/News App/Cubit/NewsState.dart';
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  // if (Platform.isWindows)
+  //   WindowManager.instance.setMinimumSize(Size(350,600));
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
   bool isDark =  await CacheHelper.getBoolean(key:'IsDark');
   runApp(MyApp(isDark));
+
 }
 
 class MyApp extends StatelessWidget{
@@ -34,7 +42,7 @@ class MyApp extends StatelessWidget{
        return  MaterialApp(
          home: Directionality(
              textDirection: TextDirection.ltr,
-             child: NewsApp()),
+             child:  NewsApp()),
          debugShowCheckedModeBanner: false,
          theme: ThemeData(
              textTheme: TextTheme(

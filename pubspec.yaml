@@ -44,6 +44,10 @@ dependencies:
   hexcolor: ^3.0.1
   webview_flutter: ^2.0.13
   shared_preferences: ^2.1.2
+  window_manager: ^0.3.6
+  desktop_window: ^0.4.0
+  responsive_builder: ^0.7.0
+
 
 
 dev_dependencies:

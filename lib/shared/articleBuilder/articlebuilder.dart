@@ -12,7 +12,7 @@ Widget ArticleBuilder(list,context,{bool isPageview=false}){
       return ListView.separated(
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index) =>
-              BusinessItem(article: list[index],context: context),
+              BusinessItem(article: list[index],context: context,index: index),
           separatorBuilder: (context, index) => SharedSeperator(),
           itemCount: list.length);
     },
